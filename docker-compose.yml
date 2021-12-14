@@ -1,0 +1,47 @@
+version: '3'
+services:
+  ztsfc-pep:
+    image: vs-uulm/ztsfc_http_pep:latest
+    ports:
+      - "443:443"
+    volumes:
+      - "./ztsfc_http_pep/config/conf.yml:/config/conf.yml:ro"
+      - "./ztsfc_http_pep/certs/:/certs/:ro"
+      - "/etc/letsencrypt/live/service1.testbed.informatik.uni-ulm.de/:/etc/letsencrypt/live/service1.testbed.informatik.uni-ulm.de/:ro"
+      - "/etc/letsencrypt/archive/service1.testbed.informatik.uni-ulm.de:/etc/letsencrypt/archive/service1.testbed.informatik.uni-ulm.de/:ro"
+    networks:
+      ztsfc_network:
+        aliases:
+          - pep.ztsfc.com
+
+  ztsfc_ldap:
+    image: rroemhild/test-openldap
+    networks:
+      ztsfc_network:
+        aliases:
+          - ldap.ztsfc.com
+
+  ztsfc_pdp:
+    image: vs-uulm/ztsfc_http_pdp:latest
+    volumes:
+      - "./ztsfc_http_pdp/certs/:/certs/:ro"
+    networks:
+      ztsfc_network:
+        aliases:
+          - pdp.ztsfc.com
+
+  ztsfc-service:
+    image: vs-uulm/ztsfc_http_service:latest
+    volumes:
+      - "./ztsfc_http_service/config/conf.yml:/config/conf.yml:ro"
+      - "./ztsfc_http_service/certs/:/certs/:ro"
+      - "/etc/letsencrypt/live/service1.testbed.informatik.uni-ulm.de/:/etc/letsencrypt/live/service1.testbed.informatik.uni-ulm.de/:ro"
+      - "/etc/letsencrypt/archive/service1.testbed.informatik.uni-ulm.de:/etc/letsencrypt/archive/service1.testbed.informatik.uni-ulm.de/:ro"
+    networks:
+      ztsfc_network:
+        aliases:
+          - service.ztsfc.com
+
+networks:
+  ztsfc_network:
+    driver: bridge
