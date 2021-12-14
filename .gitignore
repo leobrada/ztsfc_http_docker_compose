@@ -1,0 +1,6 @@
+*.crt
+*.csr
+*.pem
+*.pfx
+*.key
+conf.yml
