@@ -25,6 +25,8 @@ services:
     image: vs-uulm/ztsfc_http_pdp:latest
     volumes:
       - "./ztsfc_http_pdp/certs/:/certs/:ro"
+      - "./ztsfc_http_pdp/config/conf.yml:/config/conf.yml:ro"
+      - "./ztsfc_http_pdp/policies/policies.yml:/policies/policies.yml:ro"
     networks:
       ztsfc_network:
         aliases:

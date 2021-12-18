@@ -1,0 +1,7 @@
+resources:
+  service1.testbed.informatik.uni-ulm.de:
+    actions:
+      GET:
+        trust_threshold: 50
+      POST:
+        trust_threshold: 100
