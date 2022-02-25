@@ -7,9 +7,13 @@ attributes:
     not_within_allowed_request_rate_penalty: 10
   sf:
     logger:
-      basic: 5
-      advanced: 10
-      full: 15
+      basic: 2
+      advanced: 3
+      full: 4
+    ips:
+      basic: 10
+      advanced: 15
+      full: 20
 
 resources:
   service1.testbed.informatik.uni-ulm.de:

@@ -2,6 +2,7 @@ version: '3.7'
 services:
   ztsfc_pep:
     image: vs-uulm/ztsfc_http_pep:latest
+    #hostname: "pep.ztsfc.com"
     ports:
       - "134.60.92.41:443:443"
     volumes:
@@ -19,7 +20,6 @@ services:
 
   ztsfc_ldap:
     image: osixia/openldap:1.5.0
-#    container_name: ztsfc_http_ldap
     hostname: "ldap.ztsfc.com"
     environment:
       LDAP_LOG_LEVEL: "256"
@@ -39,8 +39,8 @@ services:
       LDAP_TLS_ENFORCE: "true"
       #LDAP_TLS_CIPHER_SUITE: "SECURE256:+SECURE128:-VERS-TLS-ALL:+VERS-TLS1.2:-RSA:-DHE-DSS:-CAMELLIA-128-CBC:-CAMELLIA-256-CBC"
       LDAP_TLS_CIPHER_SUITE: "SECURE256:-VERS-TLS-ALL:+VERS-TLS1.3"
-      LDAP_TLS_VERIFY_CLIENT: "demand"
-    command: "--loglevel debug --copy-service"
+      LDAP_TLS_VERIFY_CLIENT: "never"
+    command: "--loglevel info --copy-service"
     volumes:
       - "./ztsfc_http_ldap/ldap_var_lib_ldap:/var/lib/ldap"
       - "./ztsfc_http_ldap/ldap_etc_ldap_slapdd:/etc/ldap/slapd.d"
@@ -86,6 +86,16 @@ services:
       ztsfc_network:
         aliases:
           - sf_logger.ztsfc.com
+
+  ztsfc_sf_ips:
+    image: vs-uulm/ztsfc_http_sf_ips:latest
+    volumes:
+      - "./ztsfc_http_sf_ips/certs/:/certs/:ro"
+      - "./ztsfc_http_sf_ips/config/conf.yml:/config/conf.yml:ro"
+    networks:
+      ztsfc_network:
+        aliases:
+          - ips.ztsfc.com
 
   ztsfc_service:
     image: vs-uulm/ztsfc_http_service:latest
