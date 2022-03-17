@@ -4,7 +4,6 @@
 *.pfx
 *.key
 conf.yml
-policies.yml
 docker-compose.yml
 
 ztsfc_http_ldap/ldap_etc_ldap_slapdd/*
