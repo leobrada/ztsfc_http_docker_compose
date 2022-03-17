@@ -1,0 +1,8 @@
+# Ignore all files with secrets
+secrets/*
+
+# ... except examples
+!secrets/example-*
+
+# Ignore bootstrap.ldif
+/bootstrap.ldif
