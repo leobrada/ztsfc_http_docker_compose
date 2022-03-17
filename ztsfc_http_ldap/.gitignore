@@ -2,7 +2,7 @@
 secrets/*
 
 # ... except examples
-!secrets/example-*
+!secrets/example_*
 
 # Ignore bootstrap.ldif
 /bootstrap.ldif
