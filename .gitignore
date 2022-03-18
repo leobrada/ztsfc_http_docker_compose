@@ -1,10 +1,17 @@
+# Ignore all certificates and private keys files
 *.crt
 *.csr
 *.pem
 *.pfx
 *.key
+
+# Ignore all configurations
 conf.yml
-docker-compose.yml
+
+# Ignore the mein docker-compose file
+/docker-compose.yml
+# ..., but not the example file
+!/example_docker-compose.yml
 
 ztsfc_http_ldap/ldap_etc_ldap_slapdd/*
 ztsfc_http_ldap/ldap_var_lib_ldap/*
