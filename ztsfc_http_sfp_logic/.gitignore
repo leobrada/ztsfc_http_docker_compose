@@ -2,4 +2,4 @@
 /policies/*
 
 # ... except the examples
-!/policies/example-*
+!/policies/example_*
