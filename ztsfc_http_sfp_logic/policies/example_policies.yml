@@ -1,7 +1,7 @@
 sf_pool:
-  service_function_1:
+  logger:
     instance_urls:
-      - "https://service_function_1.example.com:443"
-  service_function_2:
+      - "https://logger.example.com:443"
+  ips:
     instance_urls:
-      - "https://service_function_2.example.com:443"
+      - "https://ips.example.com:443"
