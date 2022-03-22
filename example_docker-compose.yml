@@ -2,9 +2,8 @@ version: '3.7'
 services:
   ztsfc_pep:
     image: vs-uulm/ztsfc_http_pep:latest
-    #hostname: "pep.example.com"
     ports:
-      - "10.0.0.10:443:443"
+      - "192.168.0.1:443:443"
     volumes:
       - "./ztsfc_http_pep/config/conf.yml:/config/conf.yml:ro"
       - "./ztsfc_http_pep/certs/:/certs/:ro"
@@ -35,7 +34,7 @@ services:
       LDAP_TLS_CRT_FILENAME: "ztsfc_http_ldap.crt"
       LDAP_TLS_KEY_FILENAME: "ztsfc_http_ldap_priv.key"
       LDAP_TLS_DH_PARAM_FILENAME: "dhparam.pem"
-      LDAP_TLS_CA_CRT_FILENAME: "bwnet_root.crt"
+      LDAP_TLS_CA_CRT_FILENAME: "ca.crt"
       LDAP_TLS_ENFORCE: "true"
       LDAP_TLS_CIPHER_SUITE: "SECURE256:-VERS-TLS-ALL:+VERS-TLS1.3"
       LDAP_TLS_VERIFY_CLIENT: "never"
