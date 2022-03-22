@@ -1,0 +1,5 @@
+# Ignore all file with policies
+/policies/*
+
+# ... except the examples
+!/policies/example_*

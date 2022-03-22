@@ -2,30 +2,29 @@ version: '3.7'
 services:
   ztsfc_pep:
     image: vs-uulm/ztsfc_http_pep:latest
-    #hostname: "pep.ztsfc.com"
     ports:
-      - "134.60.92.41:443:443"
+      - "192.168.0.1:443:443"
     volumes:
       - "./ztsfc_http_pep/config/conf.yml:/config/conf.yml:ro"
       - "./ztsfc_http_pep/certs/:/certs/:ro"
       - "./ztsfc_http_pep/blocklists/:/blocklists/:ro"
-      - "/etc/letsencrypt/live/service1.testbed.informatik.uni-ulm.de/:/etc/letsencrypt/live/service1.testbed.informatik.uni-ulm.de/:ro"
-      - "/etc/letsencrypt/archive/service1.testbed.informatik.uni-ulm.de:/etc/letsencrypt/archive/service1.testbed.informatik.uni-ulm.de/:ro"
+      - "/etc/letsencrypt/live/service.example.com/:/etc/letsencrypt/live/service.example.com/:ro"
+      - "/etc/letsencrypt/archive/service.example.com:/etc/letsencrypt/archive/service.example.com/:ro"
     depends_on:
       - "ztsfc_ldap"
     networks:
       ztsfc_network:
         aliases:
-          - pep.ztsfc.com
+          - pep.example.com
 
   ztsfc_ldap:
     image: osixia/openldap:1.5.0
-    hostname: "ldap.ztsfc.com"
+    hostname: "ldap.example.com"
     environment:
       LDAP_LOG_LEVEL: "256"
       LDAP_ORGANISATION: "ZTSFC"
-      LDAP_DOMAIN: "ztsfc.com"
-      LDAP_BASE_DN: "dc=ztsfc,dc=com"
+      LDAP_DOMAIN: "example.com"
+      LDAP_BASE_DN: "dc=example,dc=com"
       LDAP_ADMIN_PASSWORD_FILE: /run/secrets/admin_pw
       LDAP_CONFIG_PASSWORD_FILE: /run/secrets/config_pw
       LDAP_READONLY_USER: "true"
@@ -35,9 +34,8 @@ services:
       LDAP_TLS_CRT_FILENAME: "ztsfc_http_ldap.crt"
       LDAP_TLS_KEY_FILENAME: "ztsfc_http_ldap_priv.key"
       LDAP_TLS_DH_PARAM_FILENAME: "dhparam.pem"
-      LDAP_TLS_CA_CRT_FILENAME: "bwnet_root.crt"
+      LDAP_TLS_CA_CRT_FILENAME: "ca.crt"
       LDAP_TLS_ENFORCE: "true"
-      #LDAP_TLS_CIPHER_SUITE: "SECURE256:+SECURE128:-VERS-TLS-ALL:+VERS-TLS1.2:-RSA:-DHE-DSS:-CAMELLIA-128-CBC:-CAMELLIA-256-CBC"
       LDAP_TLS_CIPHER_SUITE: "SECURE256:-VERS-TLS-ALL:+VERS-TLS1.3"
       LDAP_TLS_VERIFY_CLIENT: "never"
     command: "--loglevel info --copy-service"
@@ -53,7 +51,7 @@ services:
     networks:
       ztsfc_network:
         aliases:
-          - ldap.ztsfc.com
+          - ldap.example.com
 
   ztsfc_pdp:
     image: vs-uulm/ztsfc_http_pdp:latest
@@ -64,7 +62,7 @@ services:
     networks:
       ztsfc_network:
         aliases:
-          - pdp.ztsfc.com
+          - pdp.example.com
 
   ztsfc_sfp_logic:
     image: vs-uulm/ztsfc_http_sfp_logic:latest
@@ -75,7 +73,7 @@ services:
     networks:
       ztsfc_network:
         aliases:
-          - sfpl.ztsfc.com
+          - sfpl.example.com
 
   ztsfc_sf_logger:
     image: vs-uulm/ztsfc_http_sf_logger:latest
@@ -85,7 +83,7 @@ services:
     networks:
       ztsfc_network:
         aliases:
-          - sf_logger.ztsfc.com
+          - sf_logger.example.com
 
   ztsfc_sf_ips:
     image: vs-uulm/ztsfc_http_sf_ips:latest
@@ -95,19 +93,19 @@ services:
     networks:
       ztsfc_network:
         aliases:
-          - ips.ztsfc.com
+          - ips.example.com
 
   ztsfc_service:
     image: vs-uulm/ztsfc_http_service:latest
     volumes:
       - "./ztsfc_http_service/config/conf.yml:/config/conf.yml:ro"
       - "./ztsfc_http_service/certs/:/certs/:ro"
-      - "/etc/letsencrypt/live/service1.testbed.informatik.uni-ulm.de/:/etc/letsencrypt/live/service1.testbed.informatik.uni-ulm.de/:ro"
-      - "/etc/letsencrypt/archive/service1.testbed.informatik.uni-ulm.de:/etc/letsencrypt/archive/service1.testbed.informatik.uni-ulm.de/:ro"
+      - "/etc/letsencrypt/live/service.example.com/:/etc/letsencrypt/live/service.example.com/:ro"
+      - "/etc/letsencrypt/archive/service.example.com:/etc/letsencrypt/archive/service.example.com/:ro"
     networks:
       ztsfc_network:
         aliases:
-          - service.ztsfc.com
+          - service.example.com
 
 secrets:
   admin_pw:
