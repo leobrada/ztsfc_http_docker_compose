@@ -1,0 +1,8 @@
+# Ignore all certificates
+certs/*
+!certs/.gitkeep
+
+# Ignore all config files
+/config/*
+# ... except the examples
+!/config/example_*
