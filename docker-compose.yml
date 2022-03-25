@@ -66,6 +66,16 @@ services:
         aliases:
           - pdp.ztsfc.com
 
+  ztsfc_pip:
+    image: vs-uulm/ztsfc_http_pip:latest
+    volumes:
+      - "./ztsfc_http_pip/certs/:/certs/:ro"
+      - "./ztsfc_http_pip/config/conf.yml:/config/conf.yml:ro"
+    networks:
+      ztsfc_network:
+        aliases:
+          - pip.ztsfc.com
+
   ztsfc_sfp_logic:
     image: vs-uulm/ztsfc_http_sfp_logic:latest
     volumes:
