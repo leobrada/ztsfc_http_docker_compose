@@ -68,6 +68,8 @@ services:
 
   ztsfc_pip:
     image: vs-uulm/ztsfc_http_pip:latest
+    ports:
+      - "134.60.92.41:8080:8080"
     volumes:
       - "./ztsfc_http_pip/certs/:/certs/:ro"
       - "./ztsfc_http_pip/config/conf.yml:/config/conf.yml:ro"
