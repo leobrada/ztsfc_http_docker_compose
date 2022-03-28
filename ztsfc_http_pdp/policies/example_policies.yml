@@ -1,0 +1,29 @@
+attributes:
+  user:
+    pw_authenticated: 5
+    cert_authenticated: 15
+  device:
+    from_trusted_location: 5
+    not_within_allowed_request_rate_penalty: 10
+  sf:
+    logger:
+      basic: 2
+      advanced: 3
+      full: 4
+    ips:
+      basic: 10
+      advanced: 15
+      full: 20
+
+resources:
+  service_url_1:
+    actions:
+      get:
+        trust_threshold: 25
+      post:
+        trust_threshold: 35
+    trusted_locations:
+      - "127.0.0.1/8" 
+      - "192.168.0.0./16"
+    allowed_requests_per_second: 3
+    allowed_devices_per_user: 5

@@ -1,0 +1,20 @@
+system_logger:
+  system_logger_logging_level: debug
+  system_logger_destination: stdout
+  system_logger_format: text
+
+pdp:
+  listen_addr: "pdp.ztsfc.com:443"
+  certs_pdp_accepts_when_shown_by_pep:
+    - ./certs/bwnet_root.crt
+  cert_shown_by_pdp_to_pep: ./certs/example.crt
+  privkey_for_cert_shown_by_pdp_to_pep: ./certs/example_priv.key
+
+pip:
+  target_addr: "https://pip.ztsfc.com:443"
+  device_endpoint: "/get-device-attributes"
+  update_device_endpoint: "/update-device-attributes"
+  certs_pdp_accepts_when_shown_by_pip:
+    - ./certs/bwnet_root.crt
+  cert_shown_by_pdp_to_pip: ./certs/example.crt
+  privkey_for_cert_shown_by_pdp_to_pip: ./certs/example_priv.key
