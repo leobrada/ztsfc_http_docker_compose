@@ -1,0 +1,7 @@
+sf_pool:
+  logger:
+    instance_urls:
+      - "https://sf_logger.ztsfc.com:443"
+  ips:
+    instance_urls:
+      - "https://ips.ztsfc.com:443"
