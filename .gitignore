@@ -1,7 +1,7 @@
 *.csr
 *.pem
 *.pfx
-conf.yml
+# conf.yml
 policies.yml
 docker-compose.yml
 
