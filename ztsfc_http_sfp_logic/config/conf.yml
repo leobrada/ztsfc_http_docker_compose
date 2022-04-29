@@ -1,0 +1,11 @@
+system_logger:
+  system_logger_logging_level: debug
+  system_logger_destination: stdout
+  system_logger_format: text
+
+sfp_logic:
+  listen_addr: "ztsfc.com:443"
+  certs_sfpl_accepts_when_shown_by_pep:
+    - ./certs/ca.crt
+  cert_shown_by_sfpl_to_pep: ./certs/sfp_logic.crt
+  privkey_for_cert_shown_by_sfpl_to_pep: ./certs/sfp_logic.key
