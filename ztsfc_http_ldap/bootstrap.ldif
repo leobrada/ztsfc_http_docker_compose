@@ -1,0 +1,104 @@
+#################################################################################
+ ### ROOT: dc=ztsfc,dc=com
+ #################################################################################
+
+ #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+ # Organizational units: ou=Department1
+
+ dn: ou=Department1,dc=ztsfc,dc=com
+ changetype: add
+ objectclass: organizationalUnit
+ ou: Department1
+
+ #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ # Groups: ou=groups,ou=Department1
+
+ dn: ou=groups,ou=Department1,dc=ztsfc,dc=com
+ changetype: add
+ objectclass: organizationalUnit
+ ou: groups
+
+ dn: cn=admins,ou=groups,ou=Department1,dc=ztsfc,dc=com
+ changetype: add
+ cn: admins
+ objectclass: groupOfUniqueNames
+ uniqueMember: cn=Reiner Calumny,ou=users,ou=Department1,dc=ztsfc,dc=com
+ uniqueMember: cn=Miriam Popo,ou=users,ou=Department1,dc=ztsfc,dc=com
+
+ dn: cn=professors,ou=groups,ou=Department1,dc=ztsfc,dc=com
+ changetype: add
+ cn: professors
+ objectclass: groupOfUniqueNames
+ uniqueMember: cn=Reiner Calumny,ou=users,ou=Department1,dc=ztsfc,dc=com
+ uniqueMember: cn=Peter Noon,ou=users,ou=Department1,dc=ztsfc,dc=com
+
+ dn: cn=students,ou=groups,ou=Department1,dc=ztsfc,dc=com
+ changetype: add
+ cn: students
+ objectclass: groupOfUniqueNames
+ uniqueMember: cn=Miriam Popo,ou=users,ou=Department1,dc=ztsfc,dc=com
+ uniqueMember: cn=Benjamin Nixed,ou=users,ou=Department1,dc=ztsfc,dc=com
+
+ # End of ou=groups,ou=Department1
+ #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+ #&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+ # Users: ou=users,ou=Department1
+
+ dn: ou=users,ou=Department1,dc=ztsfc,dc=com
+ changetype: add
+ objectclass: organizationalUnit
+ ou: users
+
+ # 1
+ dn: cn=Reiner Calumny,ou=users,ou=Department1,dc=ztsfc,dc=com
+ changetype: add
+ objectclass: inetOrgPerson
+ cn: Reiner Calumny
+ givenname: Reiner
+ sn: calumny
+ displayname: Reiner Calumny
+ mail: reiner.calumny@ztsfc.com
+ userpassword: {SSHA}l7nhJOvDb4Dq2AbmD2OL32X727HifA2E
+
+ # 2
+ dn: cn=Peter Noon,ou=users,ou=Department1,dc=ztsfc,dc=com
+ changetype: add
+ objectclass: inetOrgPerson
+ cn: Peter Noon
+ givenname: Peter
+ sn: noon
+ displayname: Peter Noon
+ mail: peter.noon@ztsfc.com
+ userpassword: {SSHA}Z0rLn1LphpPYNwWE3kO1O+g9tRUfgkmR
+
+ # 3
+ dn: cn=Miriam Popo,ou=users,ou=Department1,dc=ztsfc,dc=com
+ changetype: add
+ objectclass: inetOrgPerson
+ cn: Miriam Popo
+ givenname: Miriam
+ sn: popo
+ displayname: Miriam Popo
+ mail: miriam.popo@ztsfc.com
+ userpassword: {SSHA}OUwTrNhOUL+JBcqEbpxwS4xcMeNhkCLg
+
+ # 4
+ dn: cn=Benjamin Nixed,ou=users,ou=Department1,dc=ztsfc,dc=com
+ changetype: add
+ objectclass: inetOrgPerson
+ cn: Benjamin Nixed
+ givenname: Benjamin
+ sn: nixed
+ displayname: Benjamin Nixed
+ mail: benjamin.nixed@ztsfc.com
+ userpassword: {SSHA}TfWmPAOfRPdL+mSjBUBa85nkp8n6i4M0
+
+ # End of ou=users,ou=Department1
+ #&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+ # End of ou=Department1
+ #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+ # End of dc=ztsfc,dc=com
+ #################################################################################
