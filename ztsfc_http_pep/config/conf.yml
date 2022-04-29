@@ -1,0 +1,93 @@
+system_logger:
+   system_logger_logging_level: debug
+   system_logger_destination: stdout
+   system_logger_format: text
+
+ blocklists:
+   path_to_botnet_list: "./blocklists/botnet_v4.txt"
+
+ # Section pep contains basic configuration for the PEP.
+ # The default_pool_size is used for connections to PDP and SFP Logic, if no
+ # pool size values are provided in the respective sections
+ pep:
+   listen_addr: ":443"
+   certs_pep_accepts_when_shown_by_clients:
+     - ./certs/ca.crt
+   default_pool_size: 50
+
+ # Basic Auth section
+ basic_auth:
+   session:
+     path_to_jwt_pub_key: "./certs/jwt_pub.pem"
+     path_to_jwt_signing_key: "./certs/jwt_priv.pem"
+
+ # Section ldap contains configuration necessary to connect to an LDAP server
+ # performing basic authentication
+ ldap:
+   base: "dc=ztsfc,dc=com"
+   host: "ldap.ztsfc.com"
+   port: 636
+   readonly_dn: "cn=readonly,dc=ztsfc,dc=com"
+   readonly_pw: "readonlypa$$w0rd"
+   user_filter: "(&(cn=%s))"
+   attributes:
+     - "givenName"
+     - "sn"
+     - "mail"
+     - "uid"
+   cert_shown_by_pep_to_ldap: ./certs/pep.crt
+   privkey_for_cert_shown_by_pep_to_ldap: ./certs/pep.key
+   cert_pep_accepts_shown_by_ldap: ./certs/ca.crt
+
+ # Section pdp contains configuration to connect with the PDP. Those are address
+ # and certificate files for mutual TLS. Further, you can define the number of
+ # clients which to prepare for PDP communication in order to improve
+ # performance (if not provided, the PEP's default pool size is used instead)
+ pdp:
+   target_pdp_addr: "https://pdp.ztsfc.com:443"
+   cert_shown_by_pep_to_pdp: ./certs/pep.crt
+   privkey_for_cert_shown_by_pep_to_pdp: ./certs/pep.key
+   cert_pep_accepts_shown_by_pdp: ./certs/ca.crt
+   pdp_client_pool_size: 50
+
+ # Section sfp_logic contains configuration to connect with the SFP Logic. Those
+ # are address and certificate files for mutual TLS. Further, you can define the
+ # number of clients which to prepare for SFP Logic communication in order to
+ # improve performance (if not provided, the PEP's default pool size is used
+ # instead)
+ sfp_logic:
+   target_sfpl_addr: "https://sfpl.ztsfc.com:443"
+   cert_shown_by_pep_to_sfpl: ./certs/pep.crt
+   privkey_for_cert_shown_by_pep_to_sfpl: ./certs/pep.key
+   cert_pep_accepts_shown_by_sfpl: ./certs/ca.crt
+   sfpl_client_pool_size: 50
+
+ # Section service_pool defines all services which are accessible through the 
+ # PEP. Provide one entry for each service.
+ # sni is the URL, under which the service can be reached. For each
+ # service, the PEP needs certificates for both the communication with clients,
+ # which wish to access the service, and the service using mutual TLS
+ service_pool:
+   webserver:
+     sni: service.ztsfc.com
+     target_service_addr: "https://service.ztsfc.com"
+     cert_shown_by_pep_to_clients_matching_sni: /etc/letsencrypt/live/service.ztsfc.de/fullchain.pem
+     privkey_for_cert_shown_by_pep_to_client: /etc/letsencrypt/live/service.ztsfc.de/privkey.pem
+     cert_shown_by_pep_to_service: ./certs/pep.crt
+     privkey_for_cert_shown_by_pep_to_service: ./certs/pep.key
+     cert_pep_accepts_when_shown_by_service: ./certs/ca.crt
+
+ # Section sf_pool defines all service functions which are available in the Zero
+ # Trust SFC network. Provide one entry for each SF.
+ # The naming of the components (here "logger", "dpi") is important! Those
+ # identifiers must be understood by the PDP and the SFP logic, because they
+ # exchange this IDs
+ sf_pool:
+   logger:
+     cert_shown_by_pep_to_sf: ./certs/pep.crt
+     privkey_for_cert_shown_by_pep_to_sf: ./certs/pep.key
+     cert_pep_accepts_shown_by_sf: ./certs/ca.crt
+   ips:
+     cert_shown_by_pep_to_sf: ./certs/pep.crt
+     privkey_for_cert_shown_by_pep_to_sf: ./certs/pep.key
+     cert_pep_accepts_shown_by_sf: ./certs/ca.crt
