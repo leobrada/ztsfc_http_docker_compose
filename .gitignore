@@ -1,8 +1,6 @@
-*.crt
 *.csr
 *.pem
 *.pfx
-*.key
 conf.yml
 policies.yml
 docker-compose.yml
