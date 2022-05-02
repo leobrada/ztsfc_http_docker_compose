@@ -4,7 +4,7 @@ system_logger:
   system_logger_format: text
 
 sfp_logic:
-  listen_addr: "ztsfc.com:443"
+  listen_addr: "sfpl.ztsfc.com:443"
   certs_sfpl_accepts_when_shown_by_pep:
     - ./certs/ca.crt
   cert_shown_by_sfpl_to_pep: ./certs/sfp_logic.crt
