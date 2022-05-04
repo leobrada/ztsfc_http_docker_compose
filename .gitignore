@@ -1,8 +1,3 @@
-*.csr
-# *.pem
-*.pfx
-# conf.yml
-policies.yml
 
 ztsfc_http_ldap/ldap_etc_ldap_slapdd/*
 ztsfc_http_ldap/ldap_var_lib_ldap/*

@@ -1,5 +1,5 @@
 system_logger:
-  system_logger_logging_level: debug
+  system_logger_logging_level: info
   system_logger_destination: stdout
   system_logger_format: text
 
@@ -14,6 +14,7 @@ pip:
   target_addr: "https://pip.ztsfc.com:443"
   device_endpoint: "/get-device-attributes"
   update_device_endpoint: "/update-device-attributes"
+  system_endpoint: "/get-system-attributes"
   certs_pdp_accepts_when_shown_by_pip:
     - ./certs/ca.crt
   cert_shown_by_pdp_to_pip: ./certs/pdp.crt
