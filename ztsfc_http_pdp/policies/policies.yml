@@ -12,8 +12,8 @@ attributes:
       full: 4
     ips:
       basic: 10
-      advanced: 15
-      full: 20
+      advanced: 13
+      full: 16
 
 resources:
   cosca-admin.informatik.uni-ulm.de:
