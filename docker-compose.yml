@@ -120,6 +120,7 @@ services:
       ztsfc_network:
         aliases:
           - service.ztsfc.com
+
   ztsfc_loki:
     image: grafana/loki:latest
     hostname: loki.ztsfc.com
@@ -132,7 +133,9 @@ services:
       - "./loki/:/loki/"
       - "./loki-config.yaml:/etc/loki/local-config.yaml:ro"
     networks:
-      - grafana
+      ztsfc_network:
+        aliases:
+          - loki.ztsfc.com
 
   ztsfc_grafana:
     image: grafana/grafana:latest
@@ -146,7 +149,9 @@ services:
       - "./ztsfc_http_grafana/certs/:/etc/certs/"
       - "./ztsfc_http_grafana/grafana.ini/:/etc/grafana/grafana.ini:ro"
     networks:
-      - grafana
+      ztsfc_network:
+        aliases:
+          - grafana.ztsfc.com
 
 secrets:
   admin_pw:
