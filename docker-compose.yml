@@ -120,6 +120,33 @@ services:
       ztsfc_network:
         aliases:
           - service.ztsfc.com
+  ztsfc_loki:
+    image: grafana/loki:latest
+    hostname: loki.ztsfc.com
+    container_name: ztsfc_loki
+    restart: unless-stopped
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    volumes:
+      - "loki:/loki"
+      - "./loki-config.yaml:/etc/loki/local-config.yaml:ro"
+    networks:
+      - grafana
+
+  ztsfc_grafana:
+    image: grafana/grafana:latest
+    hostname: grafana.ztsfc.com
+    container_name: ztsfc_grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./ztsfc_http_grafana/var_lib_grafana/:/var/lib/grafana/"
+      - "./ztsfc_http_grafana/certs/:/etc/certs/"
+      - "./ztsfc_http_grafana/grafana.ini/:/etc/grafana/grafana.ini:ro"
+    networks:
+      - grafana
 
 secrets:
   admin_pw:
