@@ -9,6 +9,12 @@ pip:
     - ./certs/ca.crt
   cert_shown_by_pip_to_pdp: ./certs/pip.crt
   privkey_for_cert_shown_by_pip_to_pdp: ./certs/pip.key
+  logging_hook:
+    hook_url: "http://cosca-admin.informatik.uni-ulm.de:3100/loki/api/v1/push"
+    cert_shown_by_pip_to_hook: ./certs/pip.crt
+    privkey_for_cert_shown_by_pip_to_hook: ./certs/pip.key
+    certs_pip_accepts_when_shown_by_hook:
+      - ./certs/ca.crt
 
 threat_intelligence:
   listen_addr: "pip.ztsfc.com:8080"
