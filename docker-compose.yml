@@ -131,7 +131,7 @@ services:
     command: -config.file=/etc/loki/local-config.yaml
     volumes:
       - "./loki/:/loki/"
-      - "./loki-config.yaml:/etc/loki/local-config.yaml:ro"
+      - "./ztsfc_http_loki/loki-config.yaml:/etc/loki/local-config.yaml:ro"
     networks:
       ztsfc_network:
         aliases:
