@@ -10,7 +10,7 @@ pdp:
   cert_shown_by_pdp_to_pep: ./certs/pdp.crt
   privkey_for_cert_shown_by_pdp_to_pep: ./certs/pdp.key
   logging_hook:
-    hook_url: "http://cosca-admin.informatik.uni-ulm.de:3100/loki/api/v1/push"
+    hook_url: "http://loki.ztsfc.com:3100/loki/api/v1/push"
     cert_shown_by_pdp_to_hook: ./certs/pdp.crt
     privkey_for_cert_shown_by_pdp_to_hook: ./certs/pdp.key
     certs_pdp_accepts_when_shown_by_hook:
