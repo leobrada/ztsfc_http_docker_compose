@@ -163,4 +163,5 @@ secrets:
 
 networks:
   ztsfc_network:
+    name: ztsfc
     driver: bridge
