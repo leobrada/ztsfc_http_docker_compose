@@ -1,10 +1,12 @@
 attributes:
   user:
-    pw_authenticated: 5
+    pw_authenticated: 10
+    usual_time: 5
+    usual_service: 5
   device:
     cert_authenticated: 15
     from_trusted_location: 5
-    not_within_allowed_request_rate_penalty: 10
+    within_allowed_request_rate: 100
   sf:
     logger:
       basic: 2
@@ -17,14 +19,19 @@ attributes:
 
 resources:
   service1.testbed.informatik.uni-ulm.de:
+    target_sensivity: 25
+    protocol_security: 5
+    target_state: 10
+    target_health: 0
+    target_vuln: 0
     actions:
       get:
-        trust_threshold: 25
+        trust_threshold: 10
       post:
-        trust_threshold: 35
+        trust_threshold: 20
     trusted_locations:
       - "134.60.0.0/16" 
       - "92.0.0.0/8"
       - "94.0.0.0/8"
-    allowed_requests_per_second: 3
+    allowed_requests_per_second: 5
     allowed_devices_per_user: 5
