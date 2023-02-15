@@ -25,10 +25,10 @@ system_logger:
 sf:
   listen_addr: ":443"
   server:
-    cert_shown_by_sf:             /path/to/server_certificate.crt
-    privkey_for_cert_shown_by_sf: /path/to/server_private.key
-    certs_sf_accepts:             /path/to/accepted/server_ca.crt
+    cert_shown_by_sf:             ./certs/server_certificate.crt
+    privkey_for_cert_shown_by_sf: ./certs/server_private.key
+    certs_sf_accepts:             ./certs/accepted/server_ca.crt
   client:
-    cert_shown_by_sf:             /path/to/client_certificate.crt
-    privkey_for_cert_shown_by_sf: /path/to/client_private.key
-    certs_sf_accepts:             /path/to/accepted/client_ca.crt
+    cert_shown_by_sf:             ./certs/client_certificate.crt
+    privkey_for_cert_shown_by_sf: ./certs/client_private.key
+    certs_sf_accepts:             ./certs/accepted/client_ca.crt

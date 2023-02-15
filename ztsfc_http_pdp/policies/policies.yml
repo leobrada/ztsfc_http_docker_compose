@@ -18,7 +18,7 @@ attributes:
       full: 20
 
 resources:
-  service1.testbed.informatik.uni-ulm.de:
+  wiki.bwnet.informatik.uni-ulm.de:
     target_sensivity: 25
     protocol_security: 5
     target_state: 10
