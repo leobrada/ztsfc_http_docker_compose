@@ -41,3 +41,11 @@ This certificate information must be specified in the **docker_compose.yml** fil
 ## ZTSFC PDP
 For the **ZTSFC PDP** component we use the docker image from https://github.com/vs-uulm/ztsfc_http_pdp.
 Follow the instructions there to build the image.
+
+### certs
+Create your certificate (incl. private key) you present during the TLS handshake. Also define the CA certificate.
+Both certificates and private key need to located in the directory **certs**.
+
+### config
+Create a config file **conf.yml** in the directory **config**.
+You can use **example_conf.yml** as template.
