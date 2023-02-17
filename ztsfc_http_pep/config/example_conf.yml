@@ -20,6 +20,8 @@ basic_auth:
   session:
     path_to_jwt_pub_key: "./certs/jwt_test_pub.pem"
     path_to_jwt_signing_key: "./certs/jwt_test_priv.pem"
+  passwd:
+    path_to_passwd: "./passwd/passwd.txt"
 
 # Section ldap contains configuration necessary to connect to an LDAP server
 # performing basic authentication
