@@ -57,6 +57,10 @@ Both certificates and private key need to located in the directory **./ztsfc_htt
 Create a config file **conf.yml** in the directory **./ztsfc_http_pip/config**.
 You can use **example_conf.yml** as template.
 
+### database
+Create a database file **database.yml** in the directory **./ztsfc_http_pip/database**.
+You can use **example_database.yml** as template.
+
 ## ZTSFC HTTP SERVICE
 For the **ZTSFC HTTP SERVICE** component we use the docker image from https://github.com/vs-uulm/ztsfc_http_service.
 Follow the instructions there to build the image.
