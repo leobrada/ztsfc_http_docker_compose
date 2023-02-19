@@ -12,6 +12,23 @@ Here all important things are exemplarily defined already. Starting from this te
 For the **ZTSFC HTTP PEP** component we use the docker image from https://github.com/vs-uulm/ztsfc_http_pep.
 Follow the instructions there to build the image.
 
+### certs
+Create your certificate (incl. private key) you present during the TLS handshake. Also define the CA certificate.
+Both certificates and private key need to located in the directory **./ztsfc_http_pep/cert**.
+
+### config
+Create a config file **conf.yml** in the directory **./ztsfc_http_pep/config**.
+You can use **example_conf.yml** as template.
+
+### policies
+Create a config file **policies.yml** in the directory **./ztsfc_http_pep/policies**.
+You can use **example_policies.yml** as template.
+
+### passwwd
+Create a passwd file **passwd.txt** in the directory **./ztsfc_http_pep/passwd**.
+You can use **example_passwd.yml** as template.
+The **passwd.txt** file has the structure: userName:salt:sha512Hash
+
 ## ZTSFC HTTP PDP
 For the **ZTSFC HTTP PDP** component we use the docker image from https://github.com/vs-uulm/ztsfc_http_pdp.
 Follow the instructions there to build the image.
