@@ -23,24 +23,6 @@ basic_auth:
   passwd:
     path_to_passwd: "./passwd/passwd.txt"
 
-# Section ldap contains configuration necessary to connect to an LDAP server
-# performing basic authentication
-ldap:
-  base: "dc=example,dc=com"
-  host: "ldap.ztsfc.com"
-  port: 636
-  readonly_dn: "cn=readonly,dc=ztsfc,dc=com"
-  readonly_pw: "readonlypa$$w0rd"
-  user_filter: "(&(cn=%s))"
-  attributes:
-    - "givenName"
-    - "sn"
-    - "mail"
-    - "uid"
-  cert_shown_by_pep_to_ldap: ./certs/example_http_pep.crt
-  privkey_for_cert_shown_by_pep_to_ldap: ./certs/example_http_pep_priv.key
-  cert_pep_accepts_shown_by_ldap: ./certs/root_CA.crt
-
 # Section pdp contains configuration to connect with the PDP. Those are address
 # and certificate files for mutual TLS. Further, you can define the number of
 # clients which to prepare for PDP communication in order to improve
