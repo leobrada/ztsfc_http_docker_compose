@@ -4,6 +4,7 @@
 *.pfx
 *.key
 conf.yml
+database.yml
 policies.yml
 passwd.txt
 docker-compose.yml
