@@ -5,10 +5,5 @@
 *.key
 conf.yml
 policies.yml
+passwd.txt
 docker-compose.yml
-
-ztsfc_http_ldap/ldap_etc_ldap_slapdd/*
-ztsfc_http_ldap/ldap_var_lib_ldap/*
-ztsfc_http_ldap/secrets/*
-!ztsfc_http_ldap/secrets/example_*
-ztsfc_http_ldap/bootstrap.ldif
