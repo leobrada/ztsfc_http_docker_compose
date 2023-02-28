@@ -19,7 +19,7 @@ attributes:
 
 resources:
   wiki.bwnet.informatik.uni-ulm.de:
-    target_sensivity: 25
+    target_sensitivity: 25
     protocol_security: 5
     target_state: 10
     target_health: 0
@@ -29,9 +29,30 @@ resources:
         trust_threshold: 10
       post:
         trust_threshold: 20
+      delete:
+        trust_threshold: 20
     trusted_locations:
       - "134.60.0.0/16" 
       - "92.0.0.0/8"
       - "94.0.0.0/8"
     allowed_requests_per_second: 5
+    allowed_devices_per_user: 5
+  overleaf.bwnet.informatik.uni-ulm.de:
+    target_sensitivity: 25
+    protocol_security: 5
+    target_state: 10
+    target_health: 0
+    target_vuln: 0
+    actions:
+      get:
+        trust_threshold: 10
+      post:
+        trust_threshold: 20
+      delete:
+        trust_threshold: 20
+    trusted_locations:
+      - "134.60.0.0/16" 
+      - "92.0.0.0/8"
+      - "94.0.0.0/8"
+    allowed_requests_per_second: 500
     allowed_devices_per_user: 5
