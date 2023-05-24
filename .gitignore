@@ -3,6 +3,7 @@
 *.pem
 *.pfx
 *.key
+*.bak
 conf.yml
 database.yml
 policies.yml
