@@ -5,6 +5,7 @@
 *.key
 *.passkey
 *.bak
+*.der
 conf.yml
 database.yml
 policies.yml
