@@ -1,10 +1,15 @@
+trust_algorithm:
+  variant: criteria_based_binary
+
 attributes:
   user:
-    pw_authenticated: 5
-    cert_authenticated: 15
+    pw_authenticated: 20
+    usual_time: 5
+    usual_service: 25
   device:
+    cert_authenticated: 30
     from_trusted_location: 5
-    not_within_allowed_request_rate_penalty: 10
+    within_allowed_request_rate: 10
   sf:
     logger:
       basic: 2
@@ -16,14 +21,74 @@ attributes:
       full: 20
 
 resources:
-  service_url_1:
+  wiki.test.de:
+    target_sensitivity: 50
+    protocol_security: 5
+    target_state: 20
+    target_health: 0
+    target_vuln: 0
     actions:
       get:
-        trust_threshold: 25
+        trust_threshold: 10
       post:
-        trust_threshold: 35
+        trust_threshold: 10
+      delete:
+        trust_threshold: 10
     trusted_locations:
-      - "127.0.0.1/8" 
-      - "192.168.0.0./16"
-    allowed_requests_per_second: 3
+      - "13.50.0.0/16" 
+      - "92.0.0.0/8"
+      - "94.0.0.0/8"
+    allowed_user_authentication_methods:
+      - "passkey"
+      - "password"
+    allowed_device_authentication_methods:
+      - "cert"
+    allowed_requests_per_second: 5
+    allowed_devices_per_user: 5
+  overleaf.test.de:
+    target_sensitivity: 25
+    protocol_security: 5
+    target_state: 20
+    target_health: 0
+    target_vuln: 0
+    actions:
+      get:
+        trust_threshold: 10
+      post:
+        trust_threshold: 10
+      delete:
+        trust_threshold: 10
+    trusted_locations:
+      - "13.50.0.0/16" 
+      - "92.0.0.0/8"
+      - "94.0.0.0/8"
+    allowed_user_authentication_methods:
+      - "passkey"
+    allowed_device_authentication_methods:
+      - "cert"
+    allowed_requests_per_second: 100
+    allowed_devices_per_user: 5
+  wekan.test.de:
+    target_sensitivity: 25
+    protocol_security: 5
+    target_state: 20
+    target_health: 0
+    target_vuln: 0
+    actions:
+      get:
+        trust_threshold: 10
+      post:
+        trust_threshold: 10
+      delete:
+        trust_threshold: 10
+    trusted_locations:
+      - "13.50.0.0/16" 
+      - "92.0.0.0/8"
+      - "94.0.0.0/8"
+    allowed_user_authentication_methods:
+      - "password"
+      - "passkey"
+    allowed_device_authentication_methods:
+      - "cert"
+    allowed_requests_per_second: 100
     allowed_devices_per_user: 5
